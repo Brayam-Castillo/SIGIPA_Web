@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f8f6">
+  <title>Inicio del operario | SIGIPA</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../assets/css/estilos.css">
+</head>
+<body class="panel-operario">
+  <aside class="op-lateral" aria-label="Navegación del operario">
+    <a class="op-marca" href="panel-operario.html" aria-label="SIGIPA, inicio del operario">
+      <span class="op-marca-icono" aria-hidden="true">S</span>
+      <span>SIGIPA</span>
+    </a>
+    <nav class="op-menu" aria-label="Navegación principal">
+      <p class="op-menu-titulo">NAVEGACIÓN</p>
+      <a class="op-menu-enlace op-menu-enlace-activo" href="panel-operario.html" aria-current="page">
+        <span class="sp-menu-icono" aria-hidden="true"></span>
+        Inicio
+      </a>
+      <a class="op-menu-enlace" href="registrar-consumo.html">
+        <span class="sp-menu-icono" aria-hidden="true"></span>
+        Registrar consumo
+      </a>
+    </nav>
+    <p class="op-lateral-pie">Prototipo de interfaz web</p>
+  </aside>
+
+  <header class="op-encabezado">
+    <p class="op-lema">Gestión inteligente para producción avícola</p>
+    <span class="op-rol">Operario</span>
+  </header>
+
+  <main class="op-contenido" id="contenido">
+    <div class="op-contenedor">
+      <div class="op-introduccion">
+        <p class="op-seccion">PANEL PRINCIPAL</p>
+        <h1>Inicio del operario</h1>
+        <p class="op-subtitulo">
+          <span class="op-texto-escritorio">Acceso a la tarea de registro manual por lote.</span>
+          <span class="op-texto-movil">Acceso rápido al registro manual.</span>
+        </p>
+      </div>
+
+      <section class="op-tarea" aria-labelledby="titulo-tarea">
+        <div class="op-tarea-cuerpo">
+          <p class="op-tarea-etiqueta">TU TAREA PRINCIPAL</p>
+          <h2 id="titulo-tarea">Registrar consumo</h2>
+          <p class="op-tarea-descripcion">
+            <span class="op-texto-escritorio">Selecciona el lote y registra alimento o agua<br>en una operación sencilla.</span>
+            <span class="op-texto-movil">Selecciona el lote y registra alimento<br>o agua de forma sencilla.</span>
+          </p>
+          <a class="op-boton" href="registrar-consumo.html">Ir al formulario</a>
+        </div>
+        <div class="op-ilustracion" aria-hidden="true">
+          <div class="op-ilustracion-formulario">
+            <span class="op-ilustracion-campo"></span>
+            <span class="op-ilustracion-campo"></span>
+            <span class="op-ilustracion-control"></span>
+          </div>
+          <span class="op-ilustracion-pie">Registro por lote</span>
+        </div>
+      </section>
+
+      <section class="op-guia" aria-labelledby="titulo-guia">
+        <h2 id="titulo-guia">Cómo completar el registro</h2>
+        <ol class="op-pasos">
+          <li class="op-paso">
+            <span class="op-paso-numero" aria-hidden="true">1</span>
+            <div>
+              <h3>Seleccionar lote</h3>
+              <p><span class="op-texto-escritorio">Indica a qué lote corresponde<br>el consumo registrado.</span><span class="op-texto-movil">Indica el lote de aves.</span></p>
+            </div>
+          </li>
+          <li class="op-paso">
+            <span class="op-paso-numero" aria-hidden="true">2</span>
+            <div>
+              <h3>Elegir tipo</h3>
+              <p><span class="op-texto-escritorio">Selecciona alimento o agua<br>e ingresa su cantidad.</span><span class="op-texto-movil">Alimento o agua y su cantidad.</span></p>
+            </div>
+          </li>
+          <li class="op-paso">
+            <span class="op-paso-numero" aria-hidden="true">3</span>
+            <div>
+              <h3>Confirmar</h3>
+              <p><span class="op-texto-escritorio">Revisa los datos antes<br>de guardar el registro.</span><span class="op-texto-movil">Revisa los datos y guarda.</span></p>
+            </div>
+          </li>
+        </ol>
+      </section>
+      <p class="op-nota">Propuesta visual · Sin datos operativos reales</p>
+    </div>
+  </main>
+
+  <nav class="op-menu-movil" aria-label="Navegación móvil">
+    <a class="op-menu-movil-enlace op-menu-movil-activo" href="panel-operario.html" aria-current="page">
+      <span class="sp-menu-icono" aria-hidden="true"></span>
+      <span>Inicio</span>
+    </a>
+    <a class="op-menu-movil-enlace" href="registrar-consumo.html">
+      <span class="sp-menu-icono" aria-hidden="true"></span>
+      <span>Registro</span>
+    </a>
+  </nav>
+</body>
+</html>

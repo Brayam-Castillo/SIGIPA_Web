@@ -1,0 +1,12 @@
+# Conexi\u00f3n con la base de datos existente
+hibernate.connection.driver_class=org.mariadb.jdbc.Driver
+hibernate.connection.url=jdbc:mariadb://localhost:3306/sigipa
+hibernate.connection.username=root
+hibernate.connection.password=
+
+# Comprobar la estructura existente sin modificarla
+hibernate.hbm2ddl.auto=validate
+
+# Mostrar en consola las consultas generadas
+hibernate.show_sql=true
+hibernate.format_sql=true

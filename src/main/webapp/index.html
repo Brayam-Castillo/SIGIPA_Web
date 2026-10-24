@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#f5f8f6">
+        <title>Ingresar | SIGIPA</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+            crossorigin="anonymous"
+            >
+        <link rel="stylesheet" href="assets/css/estilos.css">
+        <script src="assets/js/main.js" defer></script>
+    </head>
+    <body>
+        <main class="container min-vh-100 d-flex align-items-center justify-content-center py-4">
+            <div class="row justify-content-center w-100 mx-0">
+                <div class="col-12 col-sm-auto px-0">
+                    <section class="acceso" aria-labelledby="titulo-acceso">
+                        <div class="marca d-flex align-items-center">
+                            <span class="marca-icono" aria-hidden="true"></span>
+                            <span>SIGIPA</span>
+                        </div>
+
+                        <h1 id="titulo-acceso" class="acceso-titulo">Bienvenido</h1>
+                        <p class="acceso-subtitulo">Ingrese con sus credenciales.</p>
+
+                        <form id="form-acceso" class="acceso-formulario" aria-label="Formulario de acceso" method="post" action="api/acceso">
+                            <div class="campo-usuario">
+                                <label class="form-label" for="usuario">Usuario</label>
+                                <input class="form-control" id="usuario" name="nombreUsuario" type="text" autocomplete="username" placeholder="Escriba su usuario" required>
+                            </div>
+
+                            <div class="campo-contrasena">
+                                <label class="form-label" for="contrasena">Contraseña</label>
+                                <input class="form-control" id="contrasena" name="contrasena" type="password" autocomplete="current-password" placeholder="••••••••" required>
+                            </div>
+
+                            <p id="mensaje-acceso" class="small text-danger" role="status" hidden></p>
+                            <button type="submit" class="btn btn-acceso w-100 d-flex align-items-center justify-content-center">Ingresar</button>
+                        </form>
+
+                        <p class="acceso-nota mb-0">Acceso para usuarios autorizados</p>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f8f6">
+    <title>Datos del usuario | SIGIPA</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    >
+    <link rel="stylesheet" href="assets/css/estilos.css">
+  </head>
+  <body>
+    <main class="container min-vh-100 d-flex align-items-center justify-content-center py-4">
+      <div class="row justify-content-center w-100 mx-0">
+        <div class="col-12 col-sm-auto px-0">
+          <section class="acceso datos-usuario" aria-labelledby="titulo-datos">
+            <div class="marca d-flex align-items-center">
+              <span class="marca-icono" aria-hidden="true"></span>
+              <span>SIGIPA</span>
+            </div>
+
+            <h1 id="titulo-datos" class="acceso-titulo">Datos del usuario</h1>
+            <p class="acceso-subtitulo">Complete los campos solicitados.</p>
+
+            <form class="acceso-formulario" aria-label="Datos del usuario">
+              <div class="campo-datos">
+                <label class="form-label" for="nombres">Nombres</label>
+                <input
+                  class="form-control"
+                  id="nombres"
+                  name="nombres"
+                  type="text"
+                  autocomplete="given-name"
+                  placeholder="Escriba los nombres"
+                  required
+                >
+              </div>
+
+              <div class="campo-datos">
+                <label class="form-label" for="apellidos">Apellidos</label>
+                <input
+                  class="form-control"
+                  id="apellidos"
+                  name="apellidos"
+                  type="text"
+                  autocomplete="family-name"
+                  placeholder="Escriba los apellidos"
+                  required
+                >
+              </div>
+
+              <div class="campo-datos">
+                <label class="form-label" for="cedula">Cédula</label>
+                <input
+                  class="form-control"
+                  id="cedula"
+                  name="cedula"
+                  type="text"
+                  inputmode="numeric"
+                  placeholder="Número de documento"
+                  required
+                >
+              </div>
+
+              <div class="campo-datos">
+                <label class="form-label" for="fecha-nacimiento">Fecha de nacimiento</label>
+                <input
+                  class="form-control"
+                  id="fecha-nacimiento"
+                  name="fecha_nacimiento"
+                  type="text"
+                  inputmode="numeric"
+                  autocomplete="bday"
+                  placeholder="DD / MM / AAAA"
+                  required
+                >
+              </div>
+
+              <!-- El guardado se conectará al servidor en la etapa de desarrollo. -->
+              <a class="btn btn-acceso w-100" type="button" href="aviso-error.html">Guardar datos</a>
+            </form>
+          </section>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

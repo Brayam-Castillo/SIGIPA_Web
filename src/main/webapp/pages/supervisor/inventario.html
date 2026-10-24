@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#f5f8f6">
+        <title>Gestionar inventario | SIGIPA</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="../../assets/css/estilos.css">
+        <script src="../../assets/js/inventario.js" defer></script>
+    </head>
+    <body class="panel-operario panel-supervisor inventario-formulario">
+        <aside class="op-lateral" aria-label="Navegación del supervisor">
+            <a class="op-marca" href="panel-supervisor.html" aria-label="SIGIPA, inicio del supervisor">
+                <span class="op-marca-icono" aria-hidden="true">S</span>
+                <span>SIGIPA</span>
+            </a>
+
+            <nav class="op-menu" aria-label="Navegación principal">
+                <p class="op-menu-titulo">NAVEGACIÓN</p>
+                <a class="op-menu-enlace" href="panel-supervisor.html">
+                    <span class="sp-menu-icono" aria-hidden="true"></span>
+                    Inicio
+                </a>
+                <a class="op-menu-enlace op-menu-enlace-activo" href="inventario.html" aria-current="page">
+                    <span class="sp-menu-icono" aria-hidden="true"></span>
+                    Inventario
+                </a>
+                <a class="op-menu-enlace" href="generar-reporte.html">
+                    <span class="sp-menu-icono" aria-hidden="true"></span>
+                    Reportes
+                </a>
+            </nav>
+
+            <p class="op-lateral-pie">Prototipo de interfaz web</p>
+        </aside>
+
+        <header class="op-encabezado">
+            <p class="op-lema">Gestión inteligente para producción avícola</p>
+            <span class="op-rol">Supervisor</span>
+        </header>
+
+        <main class="op-contenido" id="contenido">
+            <div class="op-contenedor">
+                <div class="op-introduccion">
+                    <p class="op-seccion">OPERACIÓN / INVENTARIO</p>
+                    <h1>Gestionar inventario</h1>
+                    <p class="op-subtitulo">
+                        <span class="op-texto-escritorio">Formulario para registrar un insumo o actualizar sus existencias.</span>
+                        <span class="op-texto-movil">Registra insumos y actualiza existencias.</span>
+                    </p>
+                </div>
+
+                <section class="rc-tarjeta" aria-labelledby="titulo-datos-insumo">
+                    <header class="rc-tarjeta-cabecera">
+                        <h2 id="titulo-datos-insumo">Datos del insumo</h2>
+                        <span class="rc-requisito">RF02</span>
+                    </header>
+
+                    <div class="rc-tarjeta-cuerpo">
+                        <form id="form-inventario" class="rc-formulario si-formulario" data-api>
+                            <fieldset class="rc-grupo si-accion">
+                                <legend class="rc-etiqueta">Acción</legend>
+                                <div class="si-selector">
+                                    <label class="si-selector-opcion">
+                                        <input type="radio" name="accion-inventario" value="registrar" checked>
+                                        <span>
+                                            <span class="op-texto-escritorio">Registrar insumo</span>
+                                            <span class="op-texto-movil">Registrar</span>
+                                        </span>
+                                    </label>
+                                    <label class="si-selector-opcion">
+                                        <input type="radio" name="accion-inventario" value="actualizar">
+                                        <span>
+                                            <span class="op-texto-escritorio">Actualizar existencias</span>
+                                            <span class="op-texto-movil">Actualizar</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </fieldset>
+
+                            <div id="grupo-insumo-existente" class="rc-grupo" hidden>
+                                <label class="rc-etiqueta" for="insumo-existente">Insumo que desea actualizar *</label>
+                                <select id="insumo-existente" class="rc-control rc-select" disabled required>
+                                    <option value="">Seleccionar insumo</option>
+                                </select>
+                            </div>
+
+                            <div class="rc-fila si-fila-datos">
+                                <div class="rc-grupo">
+                                    <label class="rc-etiqueta" for="nombre-insumo">Nombre del insumo *</label>
+                                    <input class="rc-control" id="nombre-insumo" name="nombre-insumo" type="text" placeholder="Ej. Alimento de engorde" required>
+                                </div>
+
+                                <div class="rc-grupo">
+                                    <label class="rc-etiqueta" for="unidad-medida">Unidad de medida *</label>
+                                    <div class="rc-select-contenedor">
+                                        <select class="rc-control rc-select" id="unidad-medida" name="unidad-medida" required>
+                                            <option value="" selected disabled>Seleccionar unidad</option>
+                                            <option value="kg">Kilogramos (kg)</option>
+                                            <option value="l">Litros (L)</option>
+                                            <option value="unidad">Unidades</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="si-fila-cantidad">
+                                <div class="rc-grupo">
+                                    <label class="rc-etiqueta" for="cantidad-disponible">Cantidad disponible *</label>
+                                    <input class="rc-control" id="cantidad-disponible" name="cantidad-disponible" type="number" min="0" step="0.01" placeholder="Ej. 120" aria-describedby="ayuda-cantidad" required>
+                                </div>
+
+                                <p class="si-ayuda-cantidad" id="ayuda-cantidad">
+                                    <span class="si-ayuda-escritorio">El valor inicial debe ser<br>igual o mayor que cero.</span>
+                                    <span class="si-ayuda-movil">Al actualizar, selecciona un insumo<br>existente y modifica su cantidad.</span>
+                                </p>
+                            </div>
+
+                            <p class="si-nota">Revisa el insumo y la unidad antes de guardar.</p>
+
+                            <div class="rc-grupo">
+                                <label class="rc-etiqueta" for="umbral-minimo">Existencia mínima *</label>
+                                <input class="rc-control" id="umbral-minimo" name="umbral-minimo" type="number" min="0" step="0.01" placeholder="Ej. 50" aria-describedby="ayuda-minimo" required>
+                                <p id="ayuda-minimo" class="si-ayuda-cantidad">
+                                    Se mostrará una alerta cuando la cantidad disponible sea menor
+                                    que este valor. Usa la misma unidad del insumo.
+                                </p>
+                            </div>
+
+                            <div class="rc-acciones si-acciones">
+                                <button id="cancelar-inventario" class="rc-boton rc-boton-secundario" type="button">Cancelar</button>
+                                <button id="guardar-inventario" class="rc-boton rc-boton-principal" type="submit">Guardar insumo</button>
+                            </div>
+
+                            <p id="mensaje-inventario" class="mt-3 mb-0" role="status"></p>
+                        </form>
+
+                        <aside class="rc-panel-ayuda" aria-labelledby="titulo-control-existencias">
+                            <div class="rc-panel-ayuda-cabecera">
+                                <span class="rc-icono-informacion" aria-hidden="true">i</span>
+                                <h3 id="titulo-control-existencias">Control de existencias</h3>
+                            </div>
+
+                            <ul class="rc-lista-ayuda">
+                                <li>
+                                    <strong>Registrar insumo</strong>
+                                    <span>Crea un insumo con su cantidad<br>disponible y unidad de medida.</span>
+                                </li>
+                                <li>
+                                    <strong>Actualizar existencias</strong>
+                                    <span>Selecciona un insumo existente<br>para modificar su cantidad.</span>
+                                </li>
+                                <li>
+                                    <strong>Alertas</strong>
+                                    <span>La pantalla principal muestra<br>insumos por debajo de su existencia mínima.</span>
+                                </li>
+                            </ul>
+                        </aside>
+                    </div>
+                </section>
+                <section class="rc-tarjeta mt-4" aria-labelledby="titulo-inventario">
+                    <header class="rc-tarjeta-cabecera">
+                        <h2 id="titulo-inventario">Inventario disponible</h2>
+                    </header>
+
+                    <div class="p-3">
+                        <p id="inventario-vacio">Todavía no hay insumos registrados en este navegador.</p>
+                        <div class="table-responsive">
+                            <table id="tabla-inventario" class="table" hidden>
+                                <caption>Existencias registradas en la base de datos de SIGIPA.</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Insumo</th>
+                                        <th scope="col">Cantidad disponible</th>
+                                        <th scope="col">Existencia mínima</th>
+                                        <th scope="col">Unidad</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="filas-inventario"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <nav class="op-menu-movil" aria-label="Navegación móvil">
+            <a class="op-menu-movil-enlace" href="panel-supervisor.html">
+                <span class="sp-menu-icono" aria-hidden="true"></span>
+                <span>Inicio</span>
+            </a>
+            <a class="op-menu-movil-enlace op-menu-movil-activo" href="inventario.html" aria-current="page">
+                <span class="sp-menu-icono" aria-hidden="true"></span>
+                <span>Inventario</span>
+            </a>
+            <a class="op-menu-movil-enlace" href="generar-reporte.html">
+                <span class="sp-menu-icono" aria-hidden="true"></span>
+                <span>Reportes</span>
+            </a>
+        </nav>
+    </body>
+</html>

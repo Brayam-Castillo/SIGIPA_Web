@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Prueba de acceso SIGIPA</title>
+    </head>
+    <body>
+        <h1>Prueba de acceso SIGIPA</h1>
+
+        <form id="formAcceso">
+            <p>
+                <label for="nombreUsuario">Usuario:</label>
+                <input id="nombreUsuario" name="nombreUsuario"
+                       autocomplete="username" required>
+            </p>
+
+            <p>
+                <label for="contrasena">Contraseña:</label>
+                <input id="contrasena" name="contrasena"
+                       type="password"
+                       autocomplete="current-password" required>
+            </p>
+
+            <button type="submit">Iniciar sesión</button>
+        </form>
+
+        <pre id="resultado"></pre>
+
+        <script>
+            const formulario = document.getElementById("formAcceso");
+            const resultado = document.getElementById("resultado");
+
+            formulario.addEventListener("submit", async (evento) => {
+                evento.preventDefault();
+                resultado.textContent = "Comprobando...";
+                sessionStorage.removeItem("tokenCsrf");
+
+                try {
+                    const respuesta = await fetch("api/acceso", {
+                        method: "POST",
+                        body: new URLSearchParams(new FormData(formulario)),
+                        credentials: "same-origin"
+                    });
+
+                    const datos = await respuesta.json();
+
+                    if (respuesta.ok) {
+                        sessionStorage.setItem("tokenCsrf", datos.tokenCsrf);
+                    }
+
+                    resultado.textContent =
+                            "HTTP " + respuesta.status + "\n"
+                            + JSON.stringify(datos, null, 2);
+
+                } catch (error) {
+                    resultado.textContent =
+                            "No se pudo obtener la respuesta del servidor.";
+                } finally {
+                    document.getElementById("contrasena").value = "";
+                }
+            });
+        </script>
+    </body>
+</html>

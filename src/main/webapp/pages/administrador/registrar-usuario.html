@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Registrar usuario | SIGIPA</title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="../../assets/css/estilos.css">
+        <script src="../../assets/js/registro-usuario.js" defer></script>
+    </head>
+    <body>
+        <main class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <section class="card border-0 shadow-sm">
+                        <div class="card-body p-4 p-md-5">
+
+                            <p class="fw-bold text-success">SIGIPA</p>
+                            <h1 class="h3">Registrar usuario</h1>
+                            <p class="text-secondary">Cree una cuenta y asigne su rol dentro del sistema.</p>
+
+                            <form id="form-registro-usuario">
+                                <div class="row g-3">
+
+                                    <div class="col-md-6">
+                                        <label for="nombre" class="form-label">
+                                            Nombre completo
+                                        </label>
+                                        <input id="nombre" name="nombre" class="form-control" type="text" maxlength="50" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="nombre-usuario" class="form-label">
+                                            Nombre de usuario
+                                        </label>
+                                        <input id="nombre-usuario" name="nombreUsuario" class="form-control" type="text" minlength="3" maxlength="50" pattern="[A-Za-z0-9._-]{3,50}" autocomplete="off" aria-describedby="ayuda-usuario" required>
+                                        <div id="ayuda-usuario" class="form-text">
+                                            Use letras sin tilde, números, punto, guion o guion bajo.
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="correo" class="form-label">Correo electrónico</label>
+                                        <input id="correo" name="correo" class="form-control" type="email" maxlength="80" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="rol" class="form-label">Rol</label>
+                                        <select id="rol" name="idRol" class="form-select" required>
+                                            <option value="">Seleccione un rol</option>
+                                            <option value="3">Operario</option>
+                                            <option value="2">Supervisor</option>
+                                            <option value="1">Administrador</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="clave-nueva" class="form-label">Contraseña</label>
+                                        <input id="clave-nueva" name="contrasena" class="form-control" type="password" minlength="8" maxlength="128" autocomplete="new-password" aria-describedby="ayuda-clave" required>
+                                        <div id="ayuda-clave" class="form-text">Entre 8 y 128 caracteres.</div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="confirmar-clave" class="form-label">Confirmar contraseña</label>
+                                        <input id="confirmar-clave" class="form-control" type="password" minlength="8" maxlength="128" autocomplete="new-password" required>
+                                    </div>
+
+                                </div>
+
+                                <div id="mensaje-registro" role="status" hidden></div>
+
+                                <div class="d-flex flex-wrap gap-2 mt-4">
+                                    <button type="submit" class="btn btn-success">
+                                        Registrar usuario
+                                    </button>
+
+                                    <a href="panel-administrador.html" class="btn btn-outline-secondary">Volver al panel</a>
+                                </div>
+                            </form>
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
