@@ -49,6 +49,11 @@ if (formularioAcceso) {
                     }
             );
 
+            if (respuesta.status === 401) {
+                window.location.assign("aviso-error.html");
+                return;
+            }
+
             const datos = await respuesta.json();
 
             if (!respuesta.ok) {
@@ -1677,3 +1682,49 @@ if (dashboardAdmin) {
         }
     }, 300000);
 }
+/* Cerrar sesión*/
+
+(() => {
+    "use strict";
+    const encabezado = document.querySelector("header.op-encabezado");
+    if (!encabezado)
+        return;
+
+    const boton = document.createElement("button");
+    boton.type = "button";
+    boton.className = "btn btn-sm btn-outline-danger";
+    boton.textContent = "Cerrar sesión";
+    encabezado.append(boton);
+
+    // Si Atrás restaura una instantánea, el filtro vuelve a validar la sesión.
+    window.addEventListener("pageshow", evento => {
+        if (evento.persisted)
+            window.location.reload();
+    });
+
+    boton.addEventListener("click", async () => {
+        if (boton.disabled)
+            return;
+        boton.disabled = true;
+        try {
+            const respuesta = await fetch("../../api/cerrar-sesion", {
+                method: "POST",
+                credentials: "same-origin",
+                headers: {"X-CSRF-Token": sessionStorage.getItem("tokenCsrf") || ""}
+            });
+            if (respuesta.status !== 204) {
+                window.alert(respuesta.status === 403
+                        ? "Abra la pestaña donde inició sesión para cerrarla."
+                        : "No se pudo confirmar el cierre. Vuelva a intentarlo.");
+                return;
+            }
+            sessionStorage.removeItem("tokenCsrf");
+            window.location.replace("../../index.html");
+        } catch {
+            window.alert("No se pudo contactar con el servidor. Vuelva a intentarlo.");
+        } finally {
+            boton.disabled = false;
+        }
+    });
+})();
+
